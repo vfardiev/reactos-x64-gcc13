@@ -10,18 +10,24 @@ SECTIONS
     *(SORT(.data*))
     *(.rdata)
     *(SORT(.rdata*))
+	PROVIDE(__bss_start__ = .);
+	*(.bss)
+	*(SORT(.bss*))
+    *(COMMON)
+	PROVIDE(__bss_end__ = .);
   }
 
   /*
    * LD needs an explicit .edata block to make the binary correctly export
    * symbols, otherwise, if .edata is merged with another section (e.g. .rdata)
    * the exports are not exported!
-   */
+   */ 
   .edata BLOCK(__file_alignment__) :
   {
     *(.edata)
   }
-
+    
+  /*
   .bss :
   {
     __bss_start__ = . ;
@@ -29,6 +35,7 @@ SECTIONS
     *(COMMON)
     __bss_end__ = . ;
   }
+  */
 
   /* DWARF debug sections.
      Symbols in the DWARF debugging sections are relative to the beginning
