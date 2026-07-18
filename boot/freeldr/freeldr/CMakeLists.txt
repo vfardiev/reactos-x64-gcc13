@@ -15,7 +15,7 @@ if(MSVC)
 endif()
 if(NOT MSVC)
     # Оптимизация -Os критически важна, чтобы компилятор занулял верхние регистры перед rep movsw
-	# Need optimization -Os to ensure the compiler zeroes out the upper registres REP MOVSW
+	# Need optimization -Os to ensure the compiler zeroes out the upper registres before REP MOVSW
     add_compile_options(-Os)
 endif()
 
