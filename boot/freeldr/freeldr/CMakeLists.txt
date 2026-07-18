@@ -13,6 +13,11 @@ if(MSVC)
     # Explicitly use string pooling
     add_compile_options("/GF")
 endif()
+if(NOT MSVC)
+    # Оптимизация -Os критически важна, чтобы компилятор занулял верхние регистры перед rep movsw
+	# Need optimization -Os to ensure the compiler zeroes out the upper registres REP MOVSW
+    add_compile_options(-Os)
+endif()
 
 #spec2def(freeldr_pe.exe freeldr.spec)
 
