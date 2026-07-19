@@ -9,14 +9,7 @@ SECTIONS
     *(.data)
     *(SORT(.data*))
     *(.rdata)
-    *(SORT(.rdata*))
-	PROVIDE(__bss_start = .);
-	PROVIDE(__bss_start__ = .);
-	*(.bss)
-	*(SORT(.bss*))
-    *(COMMON)
-	PROVIDE(__bss_end = .);
-	PROVIDE(__bss_end__ = .);
+    *(SORT(.rdata*))	
   }
 
   /*
@@ -27,6 +20,16 @@ SECTIONS
   .edata BLOCK(__file_alignment__) :
   {
     *(.edata)
+  }
+  .bss (NOLOAD) :
+  {
+	PROVIDE(__bss_start = .);
+	PROVIDE(__bss_start__ = .);
+	*(.bss)
+	*(SORT(.bss*))
+    *(COMMON)
+	PROVIDE(__bss_end = .);
+	PROVIDE(__bss_end__ = .);
   }
 
   /* DWARF debug sections.
