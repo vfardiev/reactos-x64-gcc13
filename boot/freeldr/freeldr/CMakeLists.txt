@@ -114,8 +114,6 @@ if(NOT ARCH STREQUAL "i386" OR NOT (SARCH STREQUAL "pc98" OR SARCH STREQUAL "xbo
     include(uefi.cmake)
 endif()
 
-if(ARCH STREQUAL "i386" OR ARCH STREQUAL "arm")
-set_property(TARGET freeldr_pe APPEND_STRING PROPERTY LINK_FLAGS "-Wl,-T,${CMAKE_CURRENT_SOURCE_DIR}/freeldr_gcc.lds")
-else()
+if(ARCH STREQUAL "amd64")
 set_property(TARGET freeldr_pe APPEND_STRING PROPERTY LINK_FLAGS "-Wl,-T,${CMAKE_CURRENT_SOURCE_DIR}/freeldr_gcc_x64.lds")
 endif()
