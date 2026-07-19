@@ -10,10 +10,12 @@ SECTIONS
     *(SORT(.data*))
     *(.rdata)
     *(SORT(.rdata*))
+	PROVIDE(__bss_start = .);
 	PROVIDE(__bss_start__ = .);
 	*(.bss)
 	*(SORT(.bss*))
     *(COMMON)
+	PROVIDE(__bss_end = .);
 	PROVIDE(__bss_end__ = .);
   }
 
