@@ -9,7 +9,7 @@ SECTIONS
     *(.data)
     *(SORT(.data*))
     *(.rdata)
-    *(SORT(.rdata*))	
+	*(SORT(.rdata*))
   }
 
   /*
